@@ -13,12 +13,12 @@
     <div class="container-fluid">
         <a class="navbar-brand github-button" href="https://github.com/jing332/tts-server-go" data-size="large"
            data-show-count="true" aria-label="Star jing332/tts-server-go on GitHub">Star tts-server-go</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+        <button style="display:none;" class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                 aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div style="display:none;" class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item"><a class="nav-link active" aria-current="page" href="/">Edge接口</a></li>
                 <li class="nav-item"><a class="nav-link" href="azure.html">Azure接口</a></li>
@@ -30,9 +30,6 @@
     </div>
 </nav>
 <div class="container" style="margin-top: 30px;">
-    <div style="" class="alert alert-primary" role="alert">
-        手机版请在右上角菜单切换到其他接口
-    </div>
     <form>
         <div class="row">
             <div class="col">
@@ -286,7 +283,7 @@
         textInfo.innerText = "大小: 0kb | 耗时: 0ms"
         let startTime = Date.now()
         let ctx = new AudioContext();
-        fetch('/api/ra', {
+        fetch('/tts/api/ra', {
             method: 'post',
             headers: headers,
             body: ssml
@@ -321,7 +318,7 @@
         let voiceFormat = document.getElementsByName('voiceFormat')[0].value;
         let token = document.getElementsByName('token')[0].value;
         let interval = localStorage.getItem('interval') || 5000
-        let url = window.location.protocol + '//' + window.location.host + '/api/legado?api=' + encodeURI(window.location.protocol + '//' + window.location.host + '/api/ra')
+        let url = window.location.protocol + '//' + window.location.host + '/tts/api/legado?api=' + encodeURI(window.location.protocol + '//' + window.location.host + '/tts/api/ra')
             + '&name=' + encodeURI(name)
             + '&voiceName=' + voiceName
             + '&voiceFormat=' + voiceFormat
